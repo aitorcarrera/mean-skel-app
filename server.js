@@ -3,6 +3,10 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+// Get Mongo conf
+const mongoUri = 'mongodb://localhost/myappdatabase';
 
 // Get our API routes
 const api = require('./server/routes/api');
@@ -29,6 +33,11 @@ app.get('*', (req, res) => {
  */
 const port = process.env.PORT || '3000';
 app.set('port', port);
+
+/**
+ * Connect to MongoDB
+ */
+mongoose.connect('mongodb://localhost/myappdatabase');
 
 /**
  * Create HTTP server.
